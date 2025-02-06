@@ -1,3 +1,4 @@
 packages:
-  ./tourist-text
-  ./tourist-time
+  ./servant
+  ./text
+  ./time
