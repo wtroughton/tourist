@@ -1,5 +1,5 @@
 cabal-version:      3.4
-name:               tourist-text
+name:               tour-text
 version:            0.1.0.0
 license:            BSD-3-Clause
 license-file:       LICENSE
@@ -20,7 +20,7 @@ library
     hs-source-dirs:   src
     default-language: GHC2021
 
-test-suite tourist-text-test
+test-suite tour-text-test
     import:           warnings
     default-language: GHC2021
     type:             exitcode-stdio-1.0
@@ -28,6 +28,6 @@ test-suite tourist-text-test
     main-is:          Main.hs
     build-depends:
         base ^>=4.18.2.1,
-        tourist-text,
+        tour-text,
         tasty,
         tasty-hunit
