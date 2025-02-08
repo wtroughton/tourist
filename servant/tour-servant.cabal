@@ -1,49 +1,86 @@
-cabal-version:      3.4
-name:               tour-servant
-version:            0.1.0.0
-synopsis:           Tour guide to server development
-description:        A proxy server to National Weather Service API service
-license:            BSD-3-Clause
-license-file:       LICENSE
-author:             Winston Troughton
-maintainer:         Winston Troughton <winston@troughton.net>
-category:           Web
-build-type:         Simple
-extra-doc-files:    CHANGELOG.md
+cabal-version: 3.4
+name: tour-servant
+version: 0.1.0.0
+synopsis: Tour guide to server development
+description: A proxy server to National Weather Service API service
+license: BSD-3-Clause
+license-file: LICENSE
+author: Winston Troughton
+maintainer: Winston Troughton <winston@troughton.net>
+category: Web
+build-type: Simple
+extra-doc-files: CHANGELOG.md
 
 common warnings
-    ghc-options: -Wall
+  ghc-options: -Wall
 
 common static-ls
-    ghc-options: -plugin-package hiedb-plugin -fplugin Plugin.HieDb
-                 -fwrite-ide-info
-                 -hiedir .hiefiles
-                 -fdefer-type-errors
-                 -Werror=deferred-type-errors
-                 -Werror=deferred-out-of-scope-variables
-                 -fno-defer-typed-holes
-    build-depends: hiedb-plugin
+  ghc-options:
+    -plugin-package
+    hiedb-plugin
+    -fplugin
+    Plugin.HieDb
+    -fwrite-ide-info
+    -hiedir
+    .hiefiles
+    -fdefer-type-errors
+    -Werror=deferred-type-errors
+    -Werror=deferred-out-of-scope-variables
+    -fno-defer-typed-holes
+
+  build-depends: hiedb-plugin
 
 library
-    import:           warnings, static-ls
-    exposed-modules:  NWS.Server,
-    build-depends:    base ^>=4.18.2.1,
-                      aeson,
-                      servant-server,
-                      text,
-                      wai,
-                      warp
-    hs-source-dirs:   src
-    default-language: GHC2021
+  import: warnings, static-ls
+  exposed-modules: NWS.Product
+  build-depends:
+    aeson,
+    base ^>=4.18.2.1,
+    containers,
+    servant,
+    text,
+
+  hs-source-dirs: src
+  default-language: GHC2021
+
+executable server
+  import: warnings
+  hs-source-dirs: server
+  main-is: Main.hs
+  build-depends:
+    base ^>=4.18.2.1,
+    servant-server,
+    text,
+    tour-servant,
+    wai,
+    warp,
+
+  default-language: GHC2021
+  
+executable client
+  import: warnings
+  hs-source-dirs: client
+  main-is: Main.hs
+  build-depends:
+    base ^>=4.18.2.1,
+    http-client,
+    http-client-tls,
+    http-types,
+    servant-client,
+    servant,
+    text,
+    tour-servant,
+
+  default-language: GHC2021
 
 test-suite tour-servant-test
-    import:           warnings
-    default-language: GHC2021
-    -- other-modules:
-    -- other-extensions:
-    type:             exitcode-stdio-1.0
-    hs-source-dirs:   test
-    main-is:          Main.hs
-    build-depends:
-        base ^>=4.18.2.1,
-        tour-servant
+  import: warnings
+  default-language: GHC2021
+  -- other-modules:
+  -- other-extensions:
+  type: exitcode-stdio-1.0
+  hs-source-dirs: test
+  main-is: Main.hs
+  build-depends:
+    base ^>=4.18.2.1,
+    tour-servant,
