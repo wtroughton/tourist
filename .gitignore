@@ -27,3 +27,7 @@ cabal.project.local~
 
 # macOS
 .DS_Store
+
+# Sphinx
+_build
+_static
