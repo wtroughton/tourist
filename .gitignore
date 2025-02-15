@@ -31,3 +31,7 @@ cabal.project.local~
 # Sphinx
 _build
 _static
+
+# Direnv
+.direnv
+.envrc
