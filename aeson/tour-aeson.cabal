@@ -1,0 +1,24 @@
+cabal-version: 3.4
+name: tour-aeson
+version: 0.1.0.0
+synopsis: Tour of aeson
+description: Parsing and encoding JSON
+license: NONE
+author: Winston Troughton
+maintainer: Winston Troughton <winston@troughton.net>
+category: Web
+build-type: Simple
+
+common warnings
+  ghc-options: -Wall
+
+executable aeson
+  import: warnings
+  main-is: Main.hs
+  build-depends:
+    aeson,
+    base >=4.7 && <5,
+    bytestring,
+    text
+  hs-source-dirs: app
+  default-language: GHC2021

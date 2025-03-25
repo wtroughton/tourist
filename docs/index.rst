@@ -3,16 +3,13 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Tour of Haskell documentation
-=============================
-
-Add your content using ``reStructuredText`` syntax. See the
-`reStructuredText <https://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html>`_
-documentation for details.
-
+Tour of Haskell
+===============
 
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
 
+   monads
    uri-syntax
+   combinators

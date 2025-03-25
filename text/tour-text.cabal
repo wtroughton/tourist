@@ -15,7 +15,7 @@ common warnings
 library
     import:           warnings
     exposed-modules:  Tour, Parser.URI
-    build-depends:    base ^>=4.18.2.1,
+    build-depends:    base >=4.7,
                       megaparsec,
                       text,
                       
@@ -29,7 +29,7 @@ test-suite tour-text-test
     hs-source-dirs:   test
     main-is:          Main.hs
     build-depends:
-        base ^>=4.18.2.1,
+        base >=4.7,
         tour-text,
         tasty,
         tasty-hunit

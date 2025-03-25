@@ -14,28 +14,12 @@ extra-doc-files: CHANGELOG.md
 common warnings
   ghc-options: -Wall
 
-common static-ls
-  ghc-options:
-    -plugin-package
-    hiedb-plugin
-    -fplugin
-    Plugin.HieDb
-    -fwrite-ide-info
-    -hiedir
-    .hiefiles
-    -fdefer-type-errors
-    -Werror=deferred-type-errors
-    -Werror=deferred-out-of-scope-variables
-    -fno-defer-typed-holes
-
-  build-depends: hiedb-plugin
-
 library
-  import: warnings, static-ls
+  import: warnings
   exposed-modules: NWS.Product
   build-depends:
     aeson,
-    base ^>=4.18.2.1,
+    base >=4.7,
     containers,
     servant,
     text,
@@ -48,7 +32,7 @@ executable server
   hs-source-dirs: server
   main-is: Main.hs
   build-depends:
-    base ^>=4.18.2.1,
+    base >=4.7,
     servant-server,
     text,
     tour-servant,
@@ -62,7 +46,7 @@ executable client
   hs-source-dirs: client
   main-is: Main.hs
   build-depends:
-    base ^>=4.18.2.1,
+    base >=4.7,
     http-client,
     http-client-tls,
     http-types,
@@ -76,11 +60,9 @@ executable client
 test-suite tour-servant-test
   import: warnings
   default-language: GHC2021
-  -- other-modules:
-  -- other-extensions:
   type: exitcode-stdio-1.0
   hs-source-dirs: test
   main-is: Main.hs
   build-depends:
-    base ^>=4.18.2.1,
+    base >=4.7,
     tour-servant,

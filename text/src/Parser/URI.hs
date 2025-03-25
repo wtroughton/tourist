@@ -22,11 +22,11 @@ data Uri = Uri
     deriving (Eq, Show)
 
 data Scheme
-    = SchemeHttp
-    | SchemeHttps
-    | SchemeS3
-    | SchemeWs
-    | SchemeWss
+    = Http
+    | Https
+    | S3
+    | Ws
+    | Wss
     deriving (Eq, Show)
 
 data Authority = Authority
@@ -65,11 +65,11 @@ pScheme :: Parser Scheme
 pScheme = do
     schemeText <- T.pack <$> M.manyTill M.anySingle (void (M.char ':'))
     case schemeText of
-        "http" -> return SchemeHttp
-        "https" -> return SchemeHttps
-        "s3" -> return SchemeS3
-        "ws" -> return SchemeWs
-        "wss" -> return SchemeWss
+        "http" -> return Http
+        "https" -> return Https
+        "s3" -> return S3
+        "ws" -> return Ws
+        "wss" -> return Wss
         _ -> fail $ "Unknown scheme: " ++ T.unpack schemeText
 
 pAuthority :: Parser Authority

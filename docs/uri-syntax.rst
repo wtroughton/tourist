@@ -1,6 +1,6 @@
-=============================
- Uniform Resource Identifier
-=============================
+==============
+ Parsers: URI
+==============
 
 The URI syntax is defined by :rfc:`3986`.
 

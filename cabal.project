@@ -1,4 +1,5 @@
 packages:
+  ./aeson
   ./servant
   ./text
   ./time
